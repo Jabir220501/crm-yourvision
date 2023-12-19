@@ -7,7 +7,7 @@ function dynamicTitle($pdo, $pageTitle)
     $company = $statement->fetchColumn();
 
     // Set the dynamic title
-    $title = htmlspecialchars($company) . ' - ' . $pageTitle;
+    $title = "Your Vision" . ' - ' . $pageTitle;
 
     // Output the HTML title tag
     echo "<title>$title</title>";

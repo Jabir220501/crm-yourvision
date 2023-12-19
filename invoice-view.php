@@ -13,7 +13,7 @@ include './database/common.php';
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 
-        <?php
+    <?php
     include './components/head/head_title.php';
     dynamicTitle($pdo, 'CRM Analytics Dashboard');
     ?>
@@ -98,16 +98,9 @@ include './database/common.php';
             <div class="grid grid-cols-1">
                 <div class="card px-5 py-12 sm:px-18">
                     <div class="flex flex-col justify-between sm:flex-row">
-                        <div class="text-center sm:text-left">
-                            <h2 class="text-2xl font-semibold uppercase text-primary dark:text-accent-light">
-                                lineone
-                            </h2>
-                            <div class="space-y-1 pt-2">
-                                <p>Sparksuite, Inc.</p>
-                                <p>12345 Sunny Road</p>
-                                <p>Sunnyville, CA 12345</p>
-                            </div>
-                        </div>
+                        <?php
+                        include './components/invoice/invoice_view_head.php'
+                            ?>
                         <div class="mt-4 text-center sm:m-0 sm:text-right">
                             <h2 class="text-2xl font-semibold uppercase text-primary dark:text-accent-light">
                                 invoice
@@ -130,15 +123,6 @@ include './database/common.php';
                             <div class="space-y-1 pt-2">
                                 <p class="font-semibold">John Doe</p>
                                 <p>johndoe@example.com</p>
-                                <p>260 W. Storm Street New York, NY 10025.</p>
-                            </div>
-                        </div>
-                        <div class="mt-4 text-center sm:m-0 sm:text-right">
-                            <p class="text-lg font-medium text-slate-600 dark:text-navy-100">
-                                Payment Method:
-                            </p>
-                            <div class="space-y-1 pt-2">
-                                <p class="font-medium">Visa **** **** 1234</p>
                             </div>
                         </div>
                     </div>
@@ -222,83 +206,6 @@ include './database/common.php';
                                         320
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap rounded-l-lg px-4 py-3 sm:px-5">
-                                        3
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                        <div>
-                                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                                                CRM App
-                                            </p>
-                                            <p class="text-xs+">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Distinctio et ipsa modi.
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        80
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        65
-                                    </td>
-                                    <td
-                                        class="w-3/12 whitespace-nowrap rounded-r-lg px-4 py-3 text-right font-semibold sm:px-5">
-                                        5200
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap rounded-l-lg px-4 py-3 sm:px-5">
-                                        4
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                        <div>
-                                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                                                CMS App
-                                            </p>
-                                            <p class="text-xs+">
-                                                Lorem ipsum dolor sit amet, consectetur.
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        25
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        35
-                                    </td>
-                                    <td
-                                        class="w-3/12 whitespace-nowrap rounded-r-lg px-4 py-3 text-right font-semibold sm:px-5">
-                                        875
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap rounded-l-lg px-4 py-3 sm:px-5">
-                                        5
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                        <div>
-                                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                                                UI/UX Design
-                                            </p>
-                                            <p class="text-xs+">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Animi
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        25
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        15
-                                    </td>
-                                    <td
-                                        class="w-3/12 whitespace-nowrap rounded-r-lg px-4 py-3 text-right font-semibold sm:px-5">
-                                        375
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -312,7 +219,7 @@ include './database/common.php';
                             <div class="space-y-1 pt-2">
                                 <p>Summary : <span class="font-medium">$7320</span></p>
                                 <p>Discount : <span class="font-medium">$20</span></p>
-                                <p>Tax : <span class="font-medium">20%</span></p>
+                                <!-- <p>Tax : <span class="font-medium">20%</span></p> -->
                                 <p class="text-lg text-primary dark:text-accent-light">
                                     Total: <span class="font-medium">8780</span>
                                 </p>

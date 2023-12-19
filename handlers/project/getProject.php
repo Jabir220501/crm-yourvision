@@ -60,6 +60,4 @@ function getAllProjectDataById($pdo, $id)
     }
 }
 
-
-
 ?>
