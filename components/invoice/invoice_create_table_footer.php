@@ -13,7 +13,12 @@
                     </label>
                 </span></p>
             <p class="text-lg text-primary dark:text-accent-light">
-                Total: <span class="font-medium total">0</span>
+                <label class="block">
+                    Total:
+                    <input
+                        class="form-input w-20 rounded-lg border border-slate-300 bg-transparent px-3 py-2 placeholder:text-slate-400/70 hover:border-slate-400 focus:border-primary dark:border-navy-450 dark:hover:border-navy-400 dark:focus:border-accent"
+                        type="number" name="invoice_total"id="totalInput" readonly style="width: 150px;"/>
+                </label>
             </p>
         </div>
     </div>
@@ -31,7 +36,7 @@
         const total = subtotal - discountAmount;
 
         // Update the total field with the calculated total
-        document.querySelector('.total').textContent = total.toFixed(2);
+        document.getElementById('totalInput').value = total.toFixed(2);
     }
 
     // Listen for changes in both subtotal and discount input fields and recalculate the total

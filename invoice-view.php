@@ -1,6 +1,9 @@
 <?php
 include './database/config.php';
 include './database/common.php';
+include './handlers/invoice/getInvoice.php';
+$id = $_GET['id'];
+$invoices = getAllInvoiceDataById($pdo, $id);
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +109,7 @@ include './database/common.php';
                                 invoice
                             </h2>
                             <div class="space-y-1 pt-2">
-                                <p>Invoice #: <span class="font-semibold">123</span></p>
+                                <p>Invoice #: <span class="font-semibold"><?php echo $id ?></span></p>
                                 <p>
                                     Created: <span class="font-semibold">June 23, 2021</span>
                                 </p>
@@ -130,82 +133,38 @@ include './database/common.php';
                     <div class="is-scrollbar-hidden min-w-full overflow-x-auto">
                         <table class="is-zebra w-full text-left">
                             <thead>
-                                <tr>
-                                    <th
-                                        class="whitespace-nowrap rounded-l-lg bg-slate-200 px-3 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                        #
-                                    </th>
-                                    <th
-                                        class="whitespace-nowrap bg-slate-200 px-4 py-3 font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                        DESCRIPTION
-                                    </th>
-                                    <th
-                                        class="whitespace-nowrap bg-slate-200 px-3 py-3 text-right font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                        HRS
-                                    </th>
-                                    <th
-                                        class="whitespace-nowrap bg-slate-200 px-3 py-3 text-right font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                        RATE
-                                    </th>
-                                    <th
-                                        class="whitespace-nowrap rounded-r-lg bg-slate-200 px-3 py-3 text-right font-semibold uppercase text-slate-800 dark:bg-navy-800 dark:text-navy-100 lg:px-5">
-                                        SUBTOTAL
-                                    </th>
-                                </tr>
+                                <?php
+                                include './components/invoice/invoice_table_head_crud.php'
+                                ?>
                             </thead>
                             <tbody>
+                                <?php foreach ($invoices as $invoice): ?>
                                 <tr>
                                     <td class="whitespace-nowrap rounded-l-lg px-4 py-3 sm:px-5">
-                                        1
+                                        <?php echo $invoice['invoice_index_id'] ?>
                                     </td>
                                     <td class="whitespace-nowrap px-4 py-3 sm:px-5">
                                         <div>
                                             <p class="font-medium text-slate-600 dark:text-navy-100">
-                                                Template Design
+                                            <?php echo $invoice['invoice_name'] ?>
                                             </p>
                                             <p class="text-xs+">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit. Perferendis
+                                            <?php echo $invoice['invoice_description'] ?>
                                             </p>
                                         </div>
                                     </td>
                                     <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        10
+                                    <?php echo $invoice['invoice_price'] ?>
                                     </td>
                                     <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        55
+                                    <?php echo $invoice['invoice_hours'] ?>
                                     </td>
                                     <td
                                         class="w-3/12 whitespace-nowrap rounded-r-lg px-4 py-3 text-right font-semibold sm:px-5">
-                                        550
+                                        <?php echo $invoice['invoice_subtotal'] ?>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="whitespace-nowrap rounded-l-lg px-4 py-3 sm:px-5">
-                                        2
-                                    </td>
-                                    <td class="whitespace-nowrap px-4 py-3 sm:px-5">
-                                        <div>
-                                            <p class="font-medium text-slate-600 dark:text-navy-100">
-                                                Mobile App
-                                            </p>
-                                            <p class="text-xs+">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing
-                                                elit.
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        8
-                                    </td>
-                                    <td class="w-3/12 whitespace-nowrap px-4 py-3 text-right sm:px-5">
-                                        40
-                                    </td>
-                                    <td
-                                        class="w-3/12 whitespace-nowrap rounded-r-lg px-4 py-3 text-right font-semibold sm:px-5">
-                                        320
-                                    </td>
-                                </tr>
+                                <?php endforeach ?>
                             </tbody>
                         </table>
                     </div>

@@ -3,6 +3,7 @@ include './database/config.php';
 include './database/common.php';
 include './components/ui/table_pagination.php';
 include './components/ui/table_header.php';
+include './handlers/invoice/getInvoice.php';
     ?>
 
 <!DOCTYPE html>

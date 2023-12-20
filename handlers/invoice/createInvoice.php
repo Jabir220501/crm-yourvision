@@ -57,6 +57,7 @@ function createInvoice($pdo, $invoice_date, $invoice_client_id, $invoice_project
             'success' => false,
             'message' => 'Invoice not created: Database error - ' . $e->getMessage()
         ];
+        print_r($e->getMessage());
         return json_encode($errorResponse); // Return error JSON response for database errors
     } catch (Exception $e) {
         $pdo->rollBack(); // Rollback the transaction on error
